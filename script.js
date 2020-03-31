@@ -71,7 +71,7 @@ function showData(data) {
 
 // Get prev and next songs
 async function getMoreSongs(url) {
-  const res = await fetch(url);
+  const res = await fetch(`https://cors-anywhere.herokuapp.com/${url}`); // If we just pass the URL to avoid the CORS error. cors-anywhere allows us to use a proxy to ga around this error
   const data = await res.json();
 
   showData(data);
