@@ -19,20 +19,35 @@ async function searchSongs(term) {
 
 // Display song and artist in DOM
 function showData(data) {
-  let output = "";
+  // Using forEach
+  // let output = "";
 
-  data.data.forEach(song => {
-    output += `
-      <li>
-        <span><strong>${song.artist.name}</strong> - ${song.title}</span>
-        <button class="btn" data-artist="${song.artist.name}" data-songtitle="${song.title}">Get Lyrics</button>
-      </li>
-    `;
-  });
+  // data.data.forEach(song => {
+  //   output += `
+  //     <li>
+  //       <span><strong>${song.artist.name}</strong> - ${song.title}</span>
+  //       <button class="btn" data-artist="${song.artist.name}" data-songtitle="${song.title}">Get Lyrics</button>
+  //     </li>
+  //   `;
+  // });
 
+  // result.innerHTML = `
+  //   <ul class="songs">
+  //     ${output}
+  //   </ul>
+  // `;
+
+  // We use map to create an array of <li> and then use join to  put  everything  into a  string
   result.innerHTML = `
     <ul class="songs">
-      ${output}
+      ${data.data
+        .map(
+          song => `<li>
+            <span><strong>${song.artist.name}</strong> - ${song.title}</span>
+            <button class="btn" data-artist="${song.artist.name}" data-songtitle="${song.title}">Get Lyrics</button>
+          </li>`
+        )
+        .join("")}
     </ul>
   `;
 }
